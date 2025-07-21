@@ -1,0 +1,89 @@
+{
+  "roles": {
+    "error handling": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "security review": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "performance review": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "code quality": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "testing coverage": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "dependency audit": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "api design": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "logging monitoring": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "data validation": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "concurrency review": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "deployment readiness": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "accessibility compliance": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "logging implementation": {
+      "critical": true,
+      "standard": true,
+      "best_practice": false
+    },
+    "requirement fulfillment": {
+      "critical": true,
+      "standard": true,
+      "best_practice": false
+    },
+    "integration compatibility": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "state and data flow": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    },
+    "execution verification": {
+      "critical": false,
+      "standard": false,
+      "best_practice": false
+    }
+  }
+}

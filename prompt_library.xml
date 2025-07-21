@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prompts>
+    <prompt key="claude pre prompt">Here is what I attempted to do</prompt>
+    <prompt key="pre git diff">Here are the actual changes that were made</prompt>
+    <roles>
+        <prompt key="error handling">
+            <critical>Identify any unhandled exceptions, null pointer risks, or error paths that could cause crashes or data loss. Flag critical error scenarios that must be addressed immediately.</critical>
+            <standard>Review error handling patterns for consistency, appropriate error messages, and proper cleanup in error paths. Check if errors are logged and propagated correctly.</standard>
+            <best_practice>Evaluate error handling against industry best practices: graceful degradation, meaningful error messages for debugging, error recovery strategies, and comprehensive error documentation. Suggest advanced error handling patterns where applicable.</best_practice>
+        </prompt>
+        <prompt key="security review">
+            <critical>Identify critical security vulnerabilities that could lead to immediate exploitation: SQL injection, XSS, authentication bypasses, exposed credentials, or unauthorized data access. These must be fixed before deployment.</critical>
+            <standard>Review for standard security issues: improper input validation, weak encryption, session management flaws, and OWASP Top 10 vulnerabilities. Ensure basic security controls are implemented.</standard>
+            <best_practice>Evaluate against security best practices: defense in depth, principle of least privilege, secure defaults, security headers, rate limiting, and advanced threat modeling. Recommend security hardening measures.</best_practice>
+        </prompt>
+        <prompt key="performance review">
+            <critical>Identify severe performance issues that could cause system failure: memory leaks, infinite loops, O(n²) or worse algorithms on large datasets, or resource exhaustion vulnerabilities.</critical>
+            <standard>Review for common performance issues: unnecessary database queries, inefficient loops, missing indexes, improper caching, and suboptimal data structures. Ensure acceptable performance under normal load.</standard>
+            <best_practice>Evaluate performance optimization opportunities: advanced caching strategies, lazy loading, connection pooling, async processing, and micro-optimizations. Suggest architectural improvements for scalability.</best_practice>
+        </prompt>
+        <prompt key="code quality">
+            <critical>Identify code that is unmaintainable or incomprehensible: overly complex functions, deeply nested code, magic numbers, or complete lack of structure that blocks future development.</critical>
+            <standard>Review for standard quality issues: naming conventions, function length, proper abstraction, code duplication, and basic documentation. Ensure code meets team standards.</standard>
+            <best_practice>Evaluate against clean code principles: SOLID principles, design patterns, comprehensive documentation, self-documenting code, and architectural coherence. Suggest refactoring for optimal maintainability.</best_practice>
+        </prompt>
+        <prompt key="testing coverage">
+            <critical>Identify critical paths without any test coverage: core business logic, security controls, data integrity operations, or error handling that could cause system failures if broken.</critical>
+            <standard>Review test coverage metrics, ensure unit tests exist for all public methods, integration tests for key workflows, and basic edge case coverage. Check for test maintainability.</standard>
+            <best_practice>Evaluate comprehensive testing strategy: property-based testing, mutation testing, performance tests, chaos engineering, and test pyramid principles. Suggest advanced testing techniques for maximum reliability.</best_practice>
+        </prompt>
+        <prompt key="dependency audit">
+            <critical>Identify dependencies with critical security vulnerabilities (CVE score 7+), end-of-life packages, or licensing issues that could expose the system to immediate risk or legal problems.</critical>
+            <standard>Review for outdated dependencies, known vulnerabilities (CVE score 4-7), and unused packages. Ensure all dependencies are from trusted sources and properly licensed.</standard>
+            <best_practice>Evaluate dependency management strategy: minimal dependency principle, regular update cycles, dependency pinning, security scanning automation, and supply chain security measures.</best_practice>
+        </prompt>
+        <prompt key="api design">
+            <critical>Identify breaking changes without versioning, missing authentication/authorization, or API designs that expose sensitive data or internal implementation details.</critical>
+            <standard>Review for RESTful principles, consistent naming, proper HTTP status codes, basic versioning, and adequate error responses. Ensure APIs are functional and documented.</standard>
+            <best_practice>Evaluate against API design best practices: comprehensive OpenAPI documentation, HATEOAS, pagination strategies, rate limiting, idempotency, and developer experience optimization.</best_practice>
+        </prompt>
+        <prompt key="logging monitoring">
+            <critical>Identify missing logs for critical operations, sensitive data exposure in logs (passwords, tokens, PII), or complete absence of error logging that would prevent incident response.</critical>
+            <standard>Review for structured logging, appropriate log levels, correlation IDs, and basic metrics. Ensure logs are actionable and don't impact performance significantly.</standard>
+            <best_practice>Evaluate observability strategy: distributed tracing, comprehensive metrics, alerting rules, log aggregation patterns, and compliance with logging standards. Suggest advanced monitoring capabilities.</best_practice>
+        </prompt>
+        <prompt key="data validation">
+            <critical>Identify missing validation that could lead to data corruption, injection attacks, or system compromise. Flag any user input that reaches data stores or system calls without validation.</critical>
+            <standard>Review for comprehensive input validation, output encoding, data type checking, and boundary validation. Ensure all external data is treated as untrusted.</standard>
+            <best_practice>Evaluate validation strategy: schema validation, defensive programming, fail-safe defaults, data integrity checks, and comprehensive sanitization libraries. Suggest validation framework adoption.</best_practice>
+        </prompt>
+        <prompt key="concurrency review">
+            <critical>Identify race conditions that could corrupt data, deadlocks that could freeze the system, or missing synchronization in shared resource access that could cause crashes.</critical>
+            <standard>Review for proper use of synchronization primitives, thread-safe collections, and basic concurrent patterns. Ensure no obvious concurrency bugs exist.</standard>
+            <best_practice>Evaluate against concurrency best practices: lock-free algorithms, actor model, functional programming patterns, comprehensive testing strategies, and advanced synchronization techniques.</best_practice>
+        </prompt>
+        <prompt key="deployment readiness">
+            <critical>Identify hardcoded secrets, missing critical configurations, or deployment scripts that could expose sensitive data or cause production failures.</critical>
+            <standard>Review for environment-specific configurations, proper secret management, health checks, and basic deployment automation. Ensure smooth deployment process.</standard>
+            <best_practice>Evaluate deployment maturity: infrastructure as code, blue-green deployments, feature flags, comprehensive rollback procedures, and cloud-native patterns. Suggest DevOps improvements.</best_practice>
+        </prompt>
+        <prompt key="accessibility compliance">
+            <critical>Identify complete inaccessibility issues: missing alt text, keyboard traps, no screen reader support for critical functions, or color-only information that excludes users.</critical>
+            <standard>Review for WCAG 2.1 Level AA compliance: proper heading structure, form labels, focus management, and basic ARIA implementation. Ensure usability for common assistive technologies.</standard>
+            <best_practice>Evaluate against WCAG 2.1 Level AAA where appropriate: comprehensive keyboard shortcuts, advanced ARIA patterns, reduced motion preferences, and inclusive design principles. Suggest accessibility enhancements.</best_practice>
+        </prompt>
+        <prompt key="logging implementation">
+            <critical>Verify that new logging follows the existing logging framework and configuration. Ensure no breaking changes to current log formats, destinations, or log levels that could disrupt existing monitoring and alerting systems.</critical>
+            <standard>Review that logging adheres to the application's established patterns: consistent use of log levels, structured logging format, correlation IDs, and integration with existing logging utilities. Check that new logs follow the same style as existing ones.</standard>
+            <best_practice>Evaluate logging completeness: all significant operations logged with appropriate context, performance-sensitive logging optimizations, log sampling strategies where needed, and alignment with the application's logging philosophy. Suggest enhancements that maintain consistency with existing conventions.</best_practice>
+        </prompt>
+        <prompt key="requirement fulfillment">
+            <critical>Re-read the user's original request carefully. Verify that the core functionality requested has been implemented and works as specified. Identify any missing requirements or fundamental misunderstandings of what was asked.</critical>
+            <standard>Review that the code correctly implements all stated requirements, handles the expected use cases, and produces the desired outputs. Check for basic correctness: syntax errors, logic errors, and runtime issues that would prevent the code from working.</standard>
+            <best_practice>Evaluate how well the implementation anticipates unstated but implied requirements, handles edge cases the user might encounter, and provides a robust solution that goes beyond the minimum ask while still respecting the user's intent and constraints.</best_practice>
+        </prompt>
+        <prompt key="integration compatibility">
+            <critical>Verify all imports and dependencies exist and are properly configured. Check that the code can actually run without missing modules, undefined functions, or incompatible interfaces with existing code.</critical>
+            <standard>Review integration points with existing systems: correct API calls, proper data formats, compatible types and interfaces. Ensure the code fits within the existing architecture without breaking other components.</standard>
+            <best_practice>Evaluate seamless integration: proper abstraction layers, backwards compatibility considerations, graceful handling of version mismatches, and comprehensive integration documentation. Suggest patterns for better system cohesion.</best_practice>
+        </prompt>
+        <prompt key="state and data flow">
+            <critical>Identify broken data flows, uninitialized variables, missing return statements, or state mutations that would cause the code to fail at runtime. Verify data persistence works as expected.</critical>
+            <standard>Review state management consistency, data transformations, and flow between components. Ensure proper handling of async operations, callbacks, and promises. Check that data maintains integrity throughout its lifecycle.</standard>
+            <best_practice>Evaluate state management patterns: immutability where appropriate, clear data flow architecture, proper separation of concerns, and predictable state transitions. Suggest improvements for data flow clarity and reliability.</best_practice>
+        </prompt>
+        <prompt key="execution verification">
+            <critical>Verify the code can execute without critical runtime errors: syntax errors, import failures, undefined variables, or missing dependencies that prevent the program from starting. Test basic execution paths to ensure the code runs.</critical>
+            <standard>Review that the code executes smoothly under normal conditions: proper error handling during runtime, graceful degradation for edge cases, and stable performance. Verify all major code paths execute without errors.</standard>
+            <best_practice>Evaluate comprehensive execution verification: automated smoke tests, continuous integration checks, runtime monitoring, performance benchmarks, and production-readiness verification. Suggest testing strategies for maximum reliability.</best_practice>
+        </prompt>
+    </roles>
+</prompts>
