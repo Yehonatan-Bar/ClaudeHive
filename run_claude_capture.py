@@ -61,9 +61,9 @@ def setup_environment():
             for name, spec in missing_packages:
                 print(f"Installing {name}...")
                 if install_package(spec):
-                    print(f"  ✓ {name} installed successfully")
+                    print(f"  [OK] {name} installed successfully")
                 else:
-                    print(f"  ⚠ Failed to install {name} (functionality will be limited)")
+                    print(f"  [WARNING] Failed to install {name} (functionality will be limited)")
         else:
             print("Continuing without optional packages (some features will be limited)")
     else:
@@ -142,12 +142,19 @@ if __name__ == "__main__":
 def cleanup_zone_files():
     """Remove Windows Zone.Identifier files"""
     removed_count = 0
-    for file in SCRIPT_DIR.rglob("*:Zone.Identifier"):
-        try:
-            file.unlink()
-            removed_count += 1
-        except Exception:
-            pass  # Ignore errors, just try to clean up
+    try:
+        # Use os.walk instead of rglob to avoid Windows path issues with colons
+        for root, dirs, files in os.walk(SCRIPT_DIR):
+            for filename in files:
+                if filename.endswith(':Zone.Identifier'):
+                    file_path = Path(root) / filename
+                    try:
+                        file_path.unlink()
+                        removed_count += 1
+                    except Exception:
+                        pass  # Ignore errors, just try to clean up
+    except Exception:
+        pass  # Ignore all errors in cleanup
     return removed_count
 
 def main():
