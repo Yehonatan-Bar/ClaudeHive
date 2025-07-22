@@ -7,18 +7,18 @@ A portable version of the Claude capture tool that can run from any location wit
 1. **Copy this directory** to any location on your system
 2. **Run from the portable directory:**
    ```bash
-   python run_claude_capture.py "Your prompt here"
+   python3 run_claude_capture.py "Your prompt here"
    ```
 
 3. **Or create a launcher** in your current project:
    ```bash
-   python run_claude_capture.py --create-launcher
-   # Then use: python claude_capture.py "Your prompt here"
+   python3 run_claude_capture.py --create-launcher
+   # Then use: python3 claude_capture.py "Your prompt here"
    ```
 
 ## Features
 
-- **Zero Installation**: Works with just Python 3.6+ and Claude CLI
+- **Zero Installation**: Works with just python3 3.6+ and Claude CLI
 - **Portable**: Copy and run from any directory
 - **Role-based Analysis**: Runs Claude with multiple specialized prompts
 - **Configurable**: Customize roles and logging through JSON files
@@ -31,13 +31,13 @@ A portable version of the Claude capture tool that can run from any location wit
 
 ```bash
 # Basic usage
-python run_claude_capture.py "Create a Python web scraper"
+python3 run_claude_capture.py "Create a python3 web scraper"
 
 # Code review
-python run_claude_capture.py "Review this authentication system for security issues"
+python3 run_claude_capture.py "Review this authentication system for security issues"
 
 # Architecture analysis  
-python run_claude_capture.py "Design a microservices architecture for an e-commerce platform"
+python3 run_claude_capture.py "Design a microservices architecture for an e-commerce platform"
 ```
 
 ## Configuration
@@ -79,7 +79,7 @@ Contains the role-based prompts used for analysis. You can customize these promp
 
 ## Requirements
 
-- **Python 3.6+** (built-in modules only)
+- **python3 3.6+** (built-in modules only)
 - **Claude CLI** installed and configured
 - **Optional**: `pyautogui` for timeout handling (auto-installed if needed)
 
@@ -124,14 +124,14 @@ To customize for your needs:
 /path/to/claude_capture_portable/run_claude_capture.py --create-launcher
 
 # Now you can use
-python claude_capture.py "Analyze this codebase"
+python3 claude_capture.py "Analyze this codebase"
 ```
 
 ### Running Without Setup
 
 ```bash
 # Skip dependency checking (faster for repeated runs)
-python run_claude_capture.py --no-setup "Your prompt"
+python3 run_claude_capture.py --no-setup "Your prompt"
 ```
 
 ### Custom Configuration
@@ -142,5 +142,5 @@ Copy the portable directory and modify the JSON/XML files for project-specific n
 cp -r claude_capture_portable my_project_claude/
 cd my_project_claude/
 # Edit roles_config.json, logging.json, prompt_library.xml
-python run_claude_capture.py "Project-specific prompt"
+python3 run_claude_capture.py "Project-specific prompt"
 ```
